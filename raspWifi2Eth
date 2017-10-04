@@ -1,0 +1,30 @@
+sudo -i
+echo $'network={\n   ssid=\"SSID_NAME\"\n   key_mgmt=NONE\n}' >> /etc/wpa_supplicant/wpa_supplicant.conf
+shutdown -r now
+
+sudo -i
+apt-get install dnsmasq
+
+echo $'allow-hotplug eth0\n
+iface eth0 inet static\n
+   address 192.168.2.1\n
+   netmask 255.255.255.0\n
+   network 192.168.2.0\n
+   broadcast 192.168.2.255\n' >> /etc/network/interfaces
+   
+mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
+
+echo $'interface=eth0 # Use interface eth0\n
+listen-address=192.168.2.1 # listen on\n
+# Bind to the interface to make sure we aren&#39;t sending things\n
+# elsewhere\n
+bind-interfaces\n
+server=8.8.8.8 # Forward DNS requests to Google DNS\n
+domain-needed # Dont forward short names\n
+# Never forward addresses in the non-routed address spaces.\n
+bogus-priv\n
+# Assign IP addresses between 192.168.2.2 and 192.168.2.100 with a\n
+# 12 hours lease time\n
+dhcp-range=192.168.2.2,192.168.2.100,12h\n' > /etc/dnsmasq.conf
+
+nano /etc/sysctl.conf
