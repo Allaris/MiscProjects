@@ -1,5 +1,9 @@
 sudo -i
-echo $'network={\n   ssid=\"SSID_NAME\"\n   key_mgmt=NONE\n}' >> /etc/wpa_supplicant/wpa_supplicant.conf
+echo $'network={
+ssid=\"SSID_NAME\"
+key_mgmt=NONE
+}' >> /etc/wpa_supplicant/wpa_supplicant.conf
+
 shutdown -r now
 
 sudo -i
@@ -14,17 +18,48 @@ iface eth0 inet static\n
    
 mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
 
-echo $'interface=eth0 # Use interface eth0\n
-listen-address=192.168.2.1 # listen on\n
-# Bind to the interface to make sure we aren&#39;t sending things\n
-# elsewhere\n
-bind-interfaces\n
-server=8.8.8.8 # Forward DNS requests to Google DNS\n
-domain-needed # Dont forward short names\n
-# Never forward addresses in the non-routed address spaces.\n
-bogus-priv\n
-# Assign IP addresses between 192.168.2.2 and 192.168.2.100 with a\n
-# 12 hours lease time\n
+echo $'interface=eth0 # Use interface eth0
+listen-address=192.168.2.1 # listen on
+# Bind to the interface to make sure we aren&#39;t sending things
+# elsewhere
+bind-interfaces
+server=8.8.8.8 # Forward DNS requests to Google DNS
+domain-needed # Dont forward short names
+# Never forward addresses in the non-routed address spaces.
+bogus-priv
+# Assign IP addresses between 192.168.2.2 and 192.168.2.100 with a
+# 12 hours lease time
 dhcp-range=192.168.2.2,192.168.2.100,12h\n' > /etc/dnsmasq.conf
 
-nano /etc/sysctl.conf
+
+
+Edit the /etc/sysctl.conf file to enable packet forwarding
+
+$ sudo nano /etc/sysctl.conf
+
+Remove the # from the beginning of the line containing net.ipv4.ip_forward=1
+This will enable packet forwarding on next reboot. But if you want to try it right now
+without reboot then do this.
+$ sudo sh -c &quot;echo 1 &gt; /proc/sys/net/ipv4/ip_forward&quot;
+
+ We also need to share RPi’s internet connection with the devices connected over Wi-Fi.
+We will configure a NAT between eth0 and wlan0. Before applying new rules, you have
+to first delete any existing rules using the commands sudo iptables -F and sudo
+iptables -t nat -F
+
+$ sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+$ sudo iptables -A FORWARD -i wlan0 -o eth0 -m state -- state
+RELATED,ESTABLISHED -j ACCEPT
+$ sudo iptables -A FORWARD -i eth0 -o wlan0 -j ACCEPT
+
+However, we need these rules to be applied every time we reboot the Pi, so run sudo
+sh -c &quot;iptables-save &gt; /etc/iptables.ipv4.nat&quot; to save the rules to the
+file /etc/iptables.ipv4.nat. Now we need to run this after each reboot, so open
+the /etc/rc.local file with sudo nano /etc/rc.local and just above the line exit
+0, add the following line:
+
+$ iptables-restore &lt; /etc/iptables.ipv4.nat
+
+ And that’s all! Now just Reboot your RPi and you will be able to access Internet
+
+$ sudo reboot
