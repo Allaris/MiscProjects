@@ -32,7 +32,7 @@ FROM alpine:latest
 # Add the script
 COPY ./metricGenerator.sh /
 
-# Run the add script
+# Run the added script
 CMD chmod +x /metricGenerator.sh
 CMD sh /metricGenerator.sh
 ```
@@ -72,3 +72,4 @@ and access to `proxy`. Now create a dashboard, add a graph, edit the graph, and 
 * Container Kernel and Host Kernel http://floydhilton.com/docker/2017/03/31/Docker-ContainerHost-vs-ContainerOS-Linux-Windows.html
 * Docker Hub
 * File permissions between container and host with -v arguement
+* Alphine doesn't have bash
