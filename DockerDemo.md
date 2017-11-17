@@ -8,7 +8,8 @@ sudo docker run hello-world
 ```
 A block of text starting with "Hello from Docker!" should be printed to the terminal. If you got something else, Docker is not installed or running correctly. Docker requires sudo privileges because it uses Unix socket which is owned by root. It is possible to make the `docker` command sudo-less but it is a security concern and is not recommended.
 
-Lets create a cool demo of a monitoring service. The core components will be a custom built Docker image to send metrics, Graphite database for the metrics, and Grafana to make graphs from the stored metrics. 
+### What will be covered
+This demo will cover making a possible monitoring dashboard. The core components will be a custom built Docker image to send metrics, Graphite database for the metrics, and Grafana to visualize the metrics from Graphite. 
 
 ### Building a Docker image
 https://docs.docker.com/engine/reference/builder/
@@ -50,10 +51,7 @@ sudo docker run -d\
  --name graphite\
  --restart=always\
  -p 80:80\
- -p 2003-2004:2003-2004\
- -p 2023-2024:2023-2024\
- -p 8125:8125/udp\
- -p 8126:8126\
+ -p 2003:2003\
  --network=demoNetwork\
  hopsoft/graphite-statsd
  
