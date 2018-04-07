@@ -26,25 +26,25 @@ public class Faces {
     public static void drawFace1() {
         drawHair1();
         drawEyes1();
-        drawMouth2();
+        drawMouth1();
     }
 
     public static void drawFace2() {
-        drawHair1();
-        drawEyes1();
+        drawHair2();
+        drawEyes2();
         drawMouth2();
     }
 
     public static void drawFace3() {
-        drawHair1();
-        drawEyes1();
-        drawMouth1();
+        drawHair3();
+        drawEyes3();
+        drawMouth3();
     }
 
     public static void drawFace4() {
-        drawHair2();
-        drawEyes2();
-        drawMouth2();
+        drawHair4();
+        drawEyes4();
+        drawMouth4();
     }
 
     // HAIR TYPES
