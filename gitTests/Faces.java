@@ -44,7 +44,7 @@ public class Faces {
     public static void drawFace4() {
         drawHair4();
         drawEyes4();
-        drawMouth3();
+        drawMouth4();
     }
 
     // HAIR TYPES
