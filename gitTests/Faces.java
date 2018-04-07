@@ -37,8 +37,8 @@ public class Faces {
 
     public static void drawFace3() {
         drawHair1();
-        drawEyes2();
-        drawMouth3();
+        drawEyes1();
+        drawMouth1();
     }
 
     public static void drawFace4() {
