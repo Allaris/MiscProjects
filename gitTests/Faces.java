@@ -30,15 +30,15 @@ public class Faces {
     }
 
     public static void drawFace2() {
-        drawHair4();
-        drawEyes5();
-        drawMouth6();
+        drawHair2();
+        drawEyes2();
+        drawMouth2();
     }
 
     public static void drawFace3() {
-        drawHair7();
-        drawEyes8();
-        drawMouth9();
+        drawHair4();
+        drawEyes5();
+        drawMouth6();
     }
 
     public static void drawFace4() {
