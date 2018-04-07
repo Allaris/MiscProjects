@@ -30,9 +30,9 @@ public class Faces {
     }
 
     public static void drawFace2() {
-        drawHair1();
+        drawHair2();
         drawEyes2();
-        drawMouth3();
+        drawMouth2();
     }
 
     public static void drawFace3() {
