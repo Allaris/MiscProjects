@@ -24,27 +24,27 @@ public class Faces {
 
     // CREATES PROFILES OF DIFFERENT FACIAL FEATURES
     public static void drawFace1() {
-        drawHair3();
-        drawEyes3();
-        drawMouth3();
+        drawHair4();
+        drawEyes4();
+        drawMouth4();
     }
 
     public static void drawFace2() {
-        drawHair3();
-        drawEyes3();
-        drawMouth3();
+        drawHair4();
+        drawEyes4();
+        drawMouth4();
     }
 
     public static void drawFace3() {
-        drawHair3();
-        drawEyes3();
-        drawMouth3();
+        drawHair4();
+        drawEyes4();
+        drawMouth4();
     }
 
     public static void drawFace4() {
-        drawHair3();
-        drawEyes3();
-        drawMouth3();
+        drawHair4();
+        drawEyes4();
+        drawMouth4();
     }
 
     // HAIR TYPES
