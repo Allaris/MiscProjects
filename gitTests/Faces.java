@@ -30,21 +30,21 @@ public class Faces {
     }
 
     public static void drawFace2() {
-        drawHair2();
-        drawEyes2();
-        drawMouth2();
+        drawHair1();
+        drawEyes1();
+        drawMouth1();
     }
 
     public static void drawFace3() {
-        drawHair2();
+        drawHair1();
         drawEyes1();
-        drawMouth2();
+        drawMouth1();
     }
 
     public static void drawFace4() {
         drawHair1();
-        drawEyes2();
-        drawMouth2();
+        drawEyes1();
+        drawMouth1();
     }
 
     // HAIR TYPES
