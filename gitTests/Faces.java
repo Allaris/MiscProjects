@@ -36,14 +36,14 @@ public class Faces {
     }
 
     public static void drawFace3() {
-        drawHair2();
+        drawHair1();
         drawEyes2();
-        drawMouth2();
+        drawMouth1();
     }
 
     public static void drawFace4() {
         drawHair1();
-        drawEyes1();
+        drawEyes2();
         drawMouth1();
     }
 
