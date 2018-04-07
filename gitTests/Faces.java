@@ -42,9 +42,9 @@ public class Faces {
     }
 
     public static void drawFace4() {
-        drawHair4();
-        drawEyes4();
-        drawMouth4();
+        drawHair1();
+        drawEyes1();
+        drawMouth1();
     }
 
     // HAIR TYPES
