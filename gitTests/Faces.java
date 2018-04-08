@@ -25,8 +25,8 @@ public class Faces {
     // CREATES PROFILES OF DIFFERENT FACIAL FEATURES
     public static void drawFace1() {
         drawHair1();
-        drawEyes2();
-        drawMouth3();
+        drawEyes1();
+        drawMouth1();
     }
 
     public static void drawFace2() {
